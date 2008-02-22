@@ -1,3 +1,8 @@
+Release Name: 0.2  2008/02/21
+============================
+* Fixed default_options method
+* Kwalitee changes
+
 Release Name: 0.1  2008/02/10
 ============================
 * Initial Public Release

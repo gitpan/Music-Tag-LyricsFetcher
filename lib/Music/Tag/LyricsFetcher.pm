@@ -1,6 +1,5 @@
 package Music::Tag::LyricsFetcher;
-our $VERSION = 0.01;
-our @AUTOPLUGIN = qw();
+our $VERSION = 0.02;
 
 # Copyright (c) 2008 Edward Allen III. Some rights reserved.
 #
@@ -46,10 +45,10 @@ use strict;
 use Lyrics::Fetcher;
 our @ISA = qw(Music::Tag::Generic);
 
-sub _default_options {
+sub default_options {{
 	'lyricsoverwrite' => 0,
 	'lyricsfetchers' => undef,
-}
+}}
 
 sub get_tag {
     my $self = shift;
@@ -94,6 +93,24 @@ Optional array reference containing list of Lyrics::Fetcher plugins.
 =item lyricsoverwrite
 
 OVerwrite lyrics, even if they exists.
+
+=back
+
+=head1 METHODS
+
+=over 4
+
+=item default_options
+
+Returns the default options for the plugin.  
+
+=item set_tag
+
+Not used by this plugin.
+
+=item get_tag
+
+Uses Lyrics::Fetcher to fetch lyrics and add to object.
 
 =back
 
