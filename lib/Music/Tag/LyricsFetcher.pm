@@ -1,5 +1,5 @@
 package Music::Tag::LyricsFetcher;
-our $VERSION = 0.02;
+our $VERSION = 0.03;
 
 # Copyright (c) 2008 Edward Allen III. Some rights reserved.
 #
@@ -20,7 +20,7 @@ Music::Tag::LyricsFetcher - Music::Tag plugin to use Lyrics::Fetcher
 
 	my $info = Music::Tag->new($filename, { quiet => 1 });
 	$info->add_plugin("Lyrics");
-	$info->get_info();
+	$info->get_tag();
    
 	print "Lyrics are ", $info->lyrics;
 
@@ -41,6 +41,7 @@ Artist and Title are required to be set before using this plugin.
 =cut
 
 use strict;
+use warnings;
 
 use Lyrics::Fetcher;
 our @ISA = qw(Music::Tag::Generic);
@@ -70,9 +71,6 @@ sub get_tag {
         }
         else {
             $self->status("Lyrics not found: ", $Lyrics::Fetcher::Error);
-            #if ( $self->options->{lyricsoverwrite} ) {
-            #    $self->info->lyrics("");
-            #}
         }
     }
     return $self;

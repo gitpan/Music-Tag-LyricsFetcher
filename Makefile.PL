@@ -5,6 +5,7 @@ WriteMakefile( NAME         => "Music::Tag::LyricsFetcher",
                AUTHOR       => 'Edward Allen <ealleniii@cpan _dot_ org>',
 			   LICENSE		=> 'perl',
                PREREQ_PM => { 'Music::Tag'     => .26,
-							  'Lyrics::Fetcher'	=> 0.4,
+							  'Lyrics::Fetcher'	=> 0.005,
+							  'Lyrics::Fetcher::LeosLyrics' => 0.01,
                             },
              );

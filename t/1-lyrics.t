@@ -2,19 +2,20 @@
 use strict;
 
 use Test::More tests => 5;
+
 use 5.006;
 
 BEGIN { use_ok('Music::Tag') }
 
 my $tag = Music::Tag->new( undef,  { artist => "Sarah Slean",
-								     album => "Orphan Music",
-									 title => "Mary",
+								     title => "Eliot",
 									 ANSIColor => 0,
 									 quiet => 1,
+									 lyricsfetchers	=> "LeosLyrics",
 								   } , "Option" );
 
 ok( $tag, 'Object created');
 ok( $tag->add_plugin("LyricsFetcher"), "Plugin Added");
 ok( $tag->get_tag, 'get_tag called' );
-ok ( $tag->lyrics =~ /Toughest of the tough/, 'Lyrics found');
+ok ( $tag->lyrics =~ /I dream of Eliot/, 'Lyrics found');
 

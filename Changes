@@ -1,3 +1,9 @@
+Release Name: 0.3  2008/02/22
+============================
+* Improved test
+* Now requires Lyrics::Fetcher::LeosLyrics
+* Fixed type-o in Synopsis
+
 Release Name: 0.2  2008/02/21
 ============================
 * Fixed default_options method

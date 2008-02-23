@@ -1,5 +1,5 @@
-Music::Tag::LyricsFetcher version 0.1
-=====================================
+Music::Tag::LyricsFetcher
+=========================
 
 Module for Music::Tag to use David Precious' Lyrics::Fetcher Module for 
 fetching Lyrics.
@@ -18,10 +18,17 @@ DEPENDENCIES
 This module requires
 
     Lyrics::Fetcher
+    Lyrics::Fetcher::LeosLyrics
+
+You can also install these other plugins
+
+    Lyrics::Fetcher::LyricWiki
+    Lyrics::Fetcher::AZLyrics
+    Lyrics::Fetcher::AstraWeb
 
 COPYRIGHT AND LICENCE
 
-Copyright (C) 2007 Edward J. Allen III
+Copyright (C) 2008 Edward J. Allen III
 ealleniii _at_ cpan _dot_ org
 
 This library is free software; you can redistribute it and/or modify
