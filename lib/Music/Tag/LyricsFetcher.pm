@@ -1,16 +1,11 @@
 package Music::Tag::LyricsFetcher;
-our $VERSION = 0.40_01;
+use strict; use warnings; use utf8;
+our $VERSION = '0.4101';
 
-# Copyright (c) 2008, 2010 Edward Allen III. Some rights reserved.
-
+# Copyright © 2008,2010 Edward Allen III. Some rights reserved.
 #
 # You may distribute under the terms of either the GNU General Public
 # License or the Artistic License, as specified in the README file.
-#
-
-
-use strict;
-use warnings;
 
 use Lyrics::Fetcher;
 use base qw(Music::Tag::Generic);
@@ -22,7 +17,7 @@ sub default_options {{
 
 sub get_tag {
     my $self = shift;
-    unless ( $self->info->artist && $self->info->title ) {
+    unless ( $self->info->has_data('artist') && $self->info->has_data('title') ) {
         $self->status("Lyrics lookup requires ARTIST and TITLE already set!");
         return;
     }
@@ -30,12 +25,12 @@ sub get_tag {
         $self->status("Lyrics already in tag");
     }
     else {
-        my $lyrics = Lyrics::Fetcher->fetch($self->info->artist, $self->info->title, $self->options->{lyricsfetchers});
+        my $lyrics = Lyrics::Fetcher->fetch($self->info->get_data('artist'), $self->info->get_data('title'), $self->options->{lyricsfetchers});
 		if (($Lyrics::Fetcher::Error eq "OK") && ($lyrics)) {
             my $lyricsl = $lyrics;
             $lyricsl =~ s/[\r\n]+/ \/ /g;
             $self->tagchange( "Lyrics", substr( "$lyricsl", 0, 50 ) . "..." );
-            $self->info->lyrics($lyrics);
+            $self->info->set_data('lyrics',$lyrics);
             $self->info->changed(1);
         }
         else {
@@ -159,7 +154,7 @@ Returns lyrics
 
 =head1 BUGS
 
-Let me know.
+Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-LyricsFetcher/issues|http://github.com/riemann42/Music-Tag-LyricsFetcher/issues>.
 
 =head1 SEE ALSO
 
@@ -171,17 +166,13 @@ L<Music::Tag>
 
 Source is available at github: L<http://github.com/riemann42/Music-Tag-LyricsFetcher|http://github.com/riemann42/Music-Tag-LyricsFetcher>.
 
-=head1 BUGTRACKING
-
-Please use github for bug tracking: L<http://github.com/riemann42/Music-Tag-LyricsFetcher/issues|http://github.com/riemann42/Music-Tag-LyricsFetcher/issues>.
-
 =head1 AUTHOR 
 
 Edward Allen III <ealleniii _at_ cpan _dot_ org>
 
 =head1 COPYRIGHT
 
-Copyright (c) 2007,2008,2010 Edward Allen III. Some rights reserved.
+Copyright © 2007,2008,2010 Edward Allen III. Some rights reserved.
 
 =head1 LICENSE
 

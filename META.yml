@@ -1,6 +1,6 @@
 --- #YAML:1.0
 name:               Music-Tag-LyricsFetcher
-version:            0.4001
+version:            0.4101
 abstract:           Plugin module for Music::Tag to fetch lyrics use Lyrics::Fetcher
 author:
     - Edward Allen <ealleniii@cpan _dot_ org>
@@ -13,7 +13,7 @@ build_requires:
 requires:
     Lyrics::Fetcher:      0.005
     Lyrics::Fetcher::LyricWiki:  0.01
-    Music::Tag:           0.4001
+    Music::Tag:           0.4101
 no_index:
     directory:
         - t
